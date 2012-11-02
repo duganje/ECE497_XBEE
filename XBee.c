@@ -7,7 +7,7 @@
 
 
 //reads the next int sent to uart 2
-int read_int_serial()
+int receiveIntXbee()
 {	
 	
 	FILE* file = fopen("/dev/ttyO2", "r");
@@ -19,7 +19,7 @@ int read_int_serial()
 }
 
 //write value to uart 2
-int write_int_serial(int value)
+int sendIntXbee(int value)
 {
 	FILE* file = fopen("/dev/ttyO2", "w+");
 	fprintf(file, "%d", &value);
@@ -30,7 +30,7 @@ int write_int_serial(int value)
 }
 
 //iniitializes uart 2 for the XBEE
-int initializeXBEE() {
+int initializeXbee() {
 	int fd, len;
 	char buf[64];
 
@@ -40,7 +40,7 @@ int initializeXBEE() {
 		return fd;
 	}
 
-	len = snprinf(buf, sizeof(buf), "%d", 1);
+	len = snprintf(buf, sizeof(buf), "%d", 1);
 	write(fd, buf, len);
 	close(fd);
 
@@ -50,7 +50,7 @@ int initializeXBEE() {
 		return fd;
 	}
 
-	len = snprinf(buf, sizeof(buf), "%d", 21);
+	len = snprintf(buf, sizeof(buf), "%d", 21);
 	write(fd, buf, len);
 	close(fd);
 
