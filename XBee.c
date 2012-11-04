@@ -31,29 +31,18 @@ int sendIntXbee(int value)
 
 //iniitializes uart 2 for the XBEE
 int initializeXbee() {
-	int fd, len;
-	char buf[64];
+	FILE* file = fopen("/sys/kernel/debug/omap_mux/spi0_d0", "w+");
+	fprintf(file, "1");
+	fclose(file);
 
-	fd = open("/sys/kernel/debug/omap_mux/spi0_d0", "w+");
-	if (fd < 0) {
-		perror("omap_mux/spi0_d0");
-		return fd;
-	}
-
-	len = snprintf(buf, sizeof(buf), "%d", 1);
-	write(fd, buf, len);
-	close(fd);
-
-	fd = open("/sys/kernel/debug/omap_mux/spi0_sclk", "w+");
-	if (fd < 0) {
-		perror("omap_mux/spi0_sclk");
-		return fd;
-	}
-
-	len = snprintf(buf, sizeof(buf), "%d", 21);
-	write(fd, buf, len);
-	close(fd);
+	file = fopen("/sys/kernel/debug/omap_mux/spi0_sclk", "w+");
+	fprintf(file, "21");
+	fclose(file);
 
 	return 0;
+}
 
+int main(int argc, char *argv[])
+{
+	initializeXBEE();
 }
