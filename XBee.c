@@ -1,5 +1,6 @@
-//basic serial functions for using XBEE with the eagle bone
-//Josh Dugan, Steve Shinn, Matt Moravec
+// Basic serial functions for using XBEE with the eagle bone
+// Josh Dugan, Stephen Shinn, Matt Moravec
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -9,7 +10,6 @@
 //reads the next int sent to uart 2
 int receiveIntXbee()
 {	
-	
 	int value;
 	FILE* file = fopen("/dev/ttyO2", "r");
 	fscanf(file, "%d", &value);
@@ -24,7 +24,6 @@ int sendIntXbee(int value)
 	fprintf(file, "%d", value);
 	fclose(file);
     	return 0;
-
 }
 
 int sendShortXbee(short value)
@@ -33,7 +32,6 @@ int sendShortXbee(short value)
 	fprintf(file, "%hd", value);
 	fclose(file);
     	return 0;
-
 }
 
 short receiveShortXbee()
@@ -57,7 +55,5 @@ int initializeXbee() {
 	fprintf(file, "21");
 	fclose(file);
 	return 0;
-
 }
-
 

@@ -1,9 +1,9 @@
-//header file for XBee helper functions
+// Header file for XBee helper functions
+// Josh Dugan, Stephen Shinn, Matt Moravec
 
-//function prototypes
+// Function prototypes
 int receiveIntXbee();
 int sendIntXbee(int value);
 int sendShortXbee(short value);
 int receiveShortXbee();
 int initializeXBEE();
-
