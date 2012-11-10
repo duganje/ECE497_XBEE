@@ -70,6 +70,9 @@ RECOBJECTS= receiveMag.o XBee.o i2c.o
 # However, in the final Beagle makefile, you'll see more
 # targets listed. 
 
+all: receiveMag sendMag
+	$(CC) -o all $(CFLAGS) $(LINKER_FLAGS)
+
 receiveMag: $(RECOBJECTS)
 	$(CC) -o receiveXBee $(CFLAGS) $(LINKER_FLAGS)
 
