@@ -49,7 +49,7 @@ int main (int argc, char *argv[])
 		//transmit y-axis value
 		sendShortXbee(y_val);
 
-		fprintf(stderr, "x value = %hd, y value = %hd, z value = %hd        \r", 				x_val, y_val, z_val);
+		fprintf(stderr, "x value = %hd, y value = %hd, z value = %hd\r", x_val, 			y_val, z_val);
 
 		//small wait
 		usleep(50000);		
