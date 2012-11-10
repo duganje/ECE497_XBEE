@@ -14,7 +14,7 @@ int readAnalog() {
 	int num = 0;
 	fscanf (file, "%d", &num);
 	fclose (file);
-	printf("Sent analog num: %d\n", num);
+	printf("Sent analog num: %d     \r", num);
 	fflush(stdout);
 	return num;
 }
