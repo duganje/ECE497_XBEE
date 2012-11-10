@@ -1,5 +1,5 @@
 # *****************************************************************
-#
+# Modified by Matthew Moravec Originally posted by Mark Yoder
 # Starter makefile
 #
 # Contains rules for:
