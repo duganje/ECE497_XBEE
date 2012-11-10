@@ -30,7 +30,7 @@ int sendIntXbee(int value)
 int sendShortXbee(short value)
 {
 	FILE* file = fopen("/dev/ttyO2", "w+");
-	fprintf(file, "%hd", value);
+	fprintf(file, "%hd\n", value);
 	fclose(file);
     	return 0;
 
@@ -40,7 +40,7 @@ short receiveShortXbee()
 {	
 	short value;
 	FILE* file = fopen("/dev/ttyO2", "r");
-	fscanf(file, "%hd", &value);
+	fscanf(file, "%hd\n", &value);
 	fclose(file);
     	return value;
 }

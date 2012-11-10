@@ -4,6 +4,6 @@
 int receiveIntXbee();
 int sendIntXbee(int value);
 int sendShortXbee(short value);
-int receiveShortXbee();
+short receiveShortXbee();
 int initializeXBEE();
 
