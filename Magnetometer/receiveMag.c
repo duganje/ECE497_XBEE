@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
-#include "XBee.h"
+#include "../XBee.h"
 
 
 int main (int argc, char *argv[])
@@ -20,7 +20,7 @@ int main (int argc, char *argv[])
 		z_val = receiveShortXbee();
 		y_val = receiveShortXbee();
 
-		fprintf(stderr, "x value = %d, y value = %d, z value = %d\r", x_val, y_val, 				z_val);
+		fprintf(stderr, "x value = %hd, y value = %hd, z value = %hd\r", x_val, 			y_val, z_val);
 	
 	}
 }
