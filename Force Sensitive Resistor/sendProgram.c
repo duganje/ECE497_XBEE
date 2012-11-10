@@ -6,9 +6,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
-#include "XBee.h"
-
-#define SYSFS_GPIO_DIR "/sys/class/gpio"
+#include "../XBee.h"
 
 // Read analog value and print to console
 int readAnalog() {
@@ -16,37 +14,24 @@ int readAnalog() {
 	int num = 0;
 	fscanf (file, "%d", &num);
 	fclose (file);
-	printf("\rAnalog num: %d    ", num);
+	printf("Sent analog num: %d\n", num);
 	fflush(stdout);
 	return num;
 }
 
 // Main
 void main(int argc, char **argv, char **envp) {
-	// Export gpio60
-	FILE *fp;
-	char set_value[5];
-	fp = fopen(SYSFS_GPIO_DIR "/export", "ab");
-	rewind(fp);
-	strcpy(set_value, "60");
-	fwrite(&set_value, sizeof(char), 2, fp);
-	fclose(fp);
-
-	// Set gpio60 direction
-	FILE *file;
-	file = fopen("/sys/class/gpio/gpio60/direction","w+");
-	fprintf(file,"%s","out");
-	fclose(file);
 	
 	// initialize XBee
 	initializeXbee();
+	int analogValue;
 	
 	// Keep going; CTRL+C to exit
 	while (1) {
-		int analogValue = readAnalog();
+		analogValue = readAnalog();
 		sendIntXbee(analogValue);
 		
-		sleep(0.5);
+		sleep(0.1);
 	}
 }
 
