@@ -15,7 +15,7 @@ void lightLedIfStrong(analogValue) {
 	FILE *file;
 	file = fopen("/sys/class/gpio/gpio60/value","w+");
 	
-	if (analogValue < 100) {
+	if (analogValue < 1000) {
 		fprintf(file, "1");
 	} else {
 		fprintf(file, "0");
