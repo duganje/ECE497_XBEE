@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
-#include "../XBee.h"
+#include "XBee.h"
 #include "i2c-dev.h"
 
 

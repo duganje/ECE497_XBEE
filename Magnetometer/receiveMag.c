@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
-#include "../XBee.h"
+#include "XBee.h"
 
 
 int main (int argc, char *argv[])
