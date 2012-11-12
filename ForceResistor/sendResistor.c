@@ -6,7 +6,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
-#include "../XBee.h"
+#include "XBee.h"
 
 // Read analog value and print to console
 int readAnalog() {
