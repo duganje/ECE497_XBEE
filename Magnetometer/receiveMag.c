@@ -20,6 +20,7 @@ int main (int argc, char *argv[])
 		z_val = receiveShortXbee();
 		y_val = receiveShortXbee();
 
+		//print the received values
 		fprintf(stderr, "x value = %hd, y value = %hd, z value = %hd      \r", 				x_val, y_val, z_val);
 	
 	}
