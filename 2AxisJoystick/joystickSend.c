@@ -123,7 +123,9 @@ void main(int argc, char** argv)
 	{
 		xValue = read_x_Axis();
 		yValue = read_y_Axis();
-		sendIntXbee(xValue + ":" + yValue);
+		sendIntXbee(xValue);
+		sendIntXbee(yValue);
+//		sendIntXbee(gpio);
 		sleep(0.1); 
 	}
 }

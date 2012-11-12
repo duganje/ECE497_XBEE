@@ -18,9 +18,9 @@ int main (int argc, char *argv[])
 		//read the axis valus from the sending XBee
 		x_val = receiveShortXbee();
 		y_val = receiveShortXbee();
-		gpio =  receiveShortXbee();
+//		gpio =  receiveShortXbee();
 
-		fprintf(stderr, "x value = %hd, y value = %hd, gpio value = %hd      \r", 				x_val, y_val, z_val);
+		fprintf(stderr, "x value = %hd, y value = %hd     \r", 	x_val, y_val);
 	
 	}
 }
