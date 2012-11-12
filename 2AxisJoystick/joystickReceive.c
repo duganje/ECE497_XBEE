@@ -1,54 +1,26 @@
-// Example for the Force Sensitive Resistor with XBee.
-// Lights an LED on GPIO60 based on the received value.
-// Josh Dugan, Steve Shinn, Matt Moravec
-
+//sends data from the HMC5883L Magnetometer using the XBee radio
+//Josh Dugan, Steve Shinn, Matt Moravec
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
 #include "../XBee.h"
 
-#define SYSFS_GPIO_DIR "/sys/class/gpio"
 
-// Light the LED if the analog value is low (ie, strong force)
-void lightLedIfStrong(analogValue) {
-	FILE *file;
-	file = fopen("/sys/class/gpio/gpio60/value","w+");
-	
-	if (analogValue < 1000) {
-		fprintf(file, "1");
-	} else {
-		fprintf(file, "0");
-	}
-
-	fclose(file);
-}
-
-// Main
-void main(int argc, char **argv, char **envp) {
-	// Export gpio60
-	FILE *fp;
-	char set_value[5];
-	fp = fopen(SYSFS_GPIO_DIR "/export", "ab");
-	rewind(fp);
-	strcpy(set_value, "60");
-	fwrite(&set_value, sizeof(char), 2, fp);
-	fclose(fp);
-
-	// Set gpio60 direction
-	FILE *file;
-	file = fopen("/sys/class/gpio/gpio60/direction","w+");
-	fprintf(file,"%s","out");
-	fclose(file);
-	
-	// Initialize XBee
+int main (int argc, char *argv[])
+{
+	// set up uart2 on the bone to connect to the XBee
 	initializeXbee();
-	
-	// Keep going
-	while (1) {
-		int analogValue = receiveIntXbee();
+	short x_val, y_val, gpio;
 
-		// Do anything based on analog value
-		lightLedIfStrong(analogValue);
+	while(1){
+		
+		//read the axis valus from the sending XBee
+		x_val = receiveShortXbee();
+		y_val = receiveShortXbee();
+		gpio =  receiveShortXbee();
+
+		fprintf(stderr, "x value = %hd, y value = %hd, gpio value = %hd      \r", 				x_val, y_val, z_val);
+	
 	}
 }
